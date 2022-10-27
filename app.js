@@ -151,6 +151,11 @@ app.get("/delete/:id", function(req, res){
     }
 })
 
-app.listen(3000, function(err){
+let port = process.env.PORT;
+if(port == null || port == ""){
+    port = 3000;
+}
+
+app.listen(port, function(err){
     console.log("server up!");
 });
