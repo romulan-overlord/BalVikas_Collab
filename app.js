@@ -9,8 +9,8 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
-//mongoose.connect("mongodb+srv://romulan:rockfall911@cluster0.mi4y6sg.mongodb.net/JournalDB?retryWrites=true&w=majority");
-mongoose.connect("mongodb://localhost:27017/JournalDB");
+mongoose.connect("mongodb+srv://romulan:204214Test@cluster0.mi4y6sg.mongodb.net/JournalDB?retryWrites=true&w=majority");
+//mongoose.connect("mongodb://localhost:27017/JournalDB");
 
 const entrySchema = {
     title: String,
