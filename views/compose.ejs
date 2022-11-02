@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="/css/styles.css">
     <title>Home</title>
 </head>
-<body>
+<body class="noScroll">
     <div class="title">
         <h1 class="text">BalVikasGuru</h1>
         <a class="sign-up" href="/home">Home</a>
@@ -22,7 +22,7 @@
         <div class="entries-container">
             <form action="/save" method="post">
                 <input type="text" class="title-input" name="title" placeholder="My title"><br>
-                <textarea class="content-input" name="content"></textarea><br>
+                <textarea class="content-input" name="content" spellcheck="false"></textarea><br>
                 <input type="submit" class="save-btn" id="save-button" value="Save">
             </form>
         </div>

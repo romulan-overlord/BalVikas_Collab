@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+var mysql = require('mysql');
 
 const app = express();
 
@@ -9,8 +10,8 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
-mongoose.connect("mongodb+srv://romulan:204214Test@cluster0.mi4y6sg.mongodb.net/JournalDB?retryWrites=true&w=majority");
-//mongoose.connect("mongodb://localhost:27017/JournalDB");
+//mongoose.connect("mongodb+srv://romulan:204214Test@cluster0.mi4y6sg.mongodb.net/JournalDB?retryWrites=true&w=majority");
+mongoose.connect("mongodb://localhost:27017/JournalDB");
 
 const entrySchema = {
     title: String,
@@ -114,20 +115,24 @@ app.get("/compose", function(req,res){
 });
 
 app.post("/save", function(req, res){
-    const newEntry = new Entry({
-        title: req.body.title,
-        content: req.body.content
-    });
-    const user = Credentials.findOne({username: currentUser.username}, function(err, results){
-        if(!err){
-            if(results){
-                results.entries.push(newEntry);
-                currentUser = results;
-                results.save();
+    if(req.body.title === ""){
+        res.redirect("/home");
+    }else{
+        const newEntry = new Entry({
+            title: req.body.title,
+            content: req.body.content
+        });
+        const user = Credentials.findOne({username: currentUser.username}, function(err, results){
+            if(!err){
+                if(results){
+                    results.entries.push(newEntry);
+                    currentUser = results;
+                    results.save();
+                }
             }
-        }
-    });
-    res.redirect("/home");
+        });
+        res.redirect("/home");
+    }
 })
 
 app.get("/logout", function(req, res){

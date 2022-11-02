@@ -2,17 +2,22 @@
 // let titleHeight = $(".title").height();
 // $(".content-input").height(totalHeight - titleHeight);
 
-let windowHeight = window.innerHeight;
-let titleHeight = $(".title").outerHeight();
-$(".content").height(windowHeight - titleHeight);
 
-let titleBoxHeight = $(".title-input").outerHeight();
-let buttonHeight = $("#save-button").outerHeight();
-let contentHeight = $(".content").outerHeight();
-let settingHeight = contentHeight - 60 - titleBoxHeight - buttonHeight;
-$(".content-input").outerHeight(settingHeight);
+function setHeight(){
+    let windowHeight = window.innerHeight;
+    let titleHeight = $(".title").outerHeight();
+    $(".content").height(windowHeight - titleHeight);
 
-let divWidth = $(".entries-container").width();
+    let titleBoxHeight = $(".title-input").outerHeight();
+    let buttonHeight = $("#save-button").outerHeight();
+    let contentHeight = $(".content").outerHeight();
+    let settingHeight = contentHeight - 60 - titleBoxHeight - buttonHeight;
+    $(".content-input").outerHeight(settingHeight);
 
-$(".title-input").outerWidth(divWidth);
-$(".content-input").outerWidth(divWidth);
+    let divWidth = $(".entries-container").width();
+
+    $(".title-input").outerWidth(divWidth);
+    $(".content-input").outerWidth(divWidth);
+}
+
+window.onresize = setHeight();

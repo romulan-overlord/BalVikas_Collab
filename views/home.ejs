@@ -26,7 +26,7 @@
                 <% for(let i=0; i<entries.length; i++){ %>
                     <li>
                         <h3><%= entries[i].title %></h3>
-                        <p><%= (entries[i].content).substr(0,150) %><a href="/posts/<%= entries[i].title %>">... read more</a></p>
+                        <p><%= (entries[i].content).substr(0,100) %>... <a href="/posts/<%= entries[i].title %>">read more</a></p>
                     </li>
                 <% } %>
             </ul>

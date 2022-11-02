@@ -2,11 +2,23 @@ html{
     height: 100%;
 }
 
+::-webkit-scrollbar {
+    display: none;
+}
+
+::-webkit-scrollbar-button {
+    display: none;
+}
+
 body{
     height: 100%;
     margin: 0;
     padding: 0;
-    /* overflow: hidden; */
+    -ms-overflow-style:none;
+}
+
+.noScroll{
+    overflow: hidden;
 }
 
 .title{
@@ -164,6 +176,7 @@ input:focus{
     height: 80%;
     padding: 30px 0px;
     margin: auto;
+    font-family: sans-serif;
 }
 
 .entry-list{
@@ -177,6 +190,13 @@ input:focus{
     padding: 15px;
     border-radius: 10px;
     margin-bottom: 5px;
+    transition: 0.3s;
+    color: black;
+}
+
+.entry-list li:hover{
+    background-color: rgba(177, 175, 255, 0.9);
+    color: rgb(252, 252, 255);
 }
 
 .entry-list h3{
@@ -189,7 +209,11 @@ input:focus{
 
 .entry-list a{
     text-decoration: none;
-    color: rgb(98, 95, 205);
+    /* color: rgb(39, 34, 190); */
+}
+
+.entry-list a:hover{
+    color: rgb(255, 255, 255);
 }
 
 .title-input{
@@ -200,6 +224,8 @@ input:focus{
     padding: 15px;
     border-radius: 10px;
     margin-bottom: 5px;
+    font-family: sans-serif;
+    font-size: large;
 }
 
 .content-input{
@@ -207,11 +233,27 @@ input:focus{
     /* width: 100%; */
     background-color: rgba(177, 175, 255, 0.4);
     border: none;
-    padding: 30px;
+    padding: 15px;
     border-radius: 10px;
     box-sizing: border-box;
+    font-family: sans-serif;
 }
 
 .content-input:focus{
     outline: none;
+}
+
+.entry-disp{
+    background-color: rgba(177, 175, 255, 0.4);
+    border-radius: 10px;
+}
+
+.entry-disp h3{
+    margin: 0;
+    padding: 15px;
+}
+
+.entry-disp p{
+    margin: 0;
+    padding: 15px 15px 30px 15px;
 }
