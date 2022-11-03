@@ -595,4 +595,16 @@ function addGurus(){
   });
 }
 
-addGurus();
+function test(){
+  let str = "SELECT `Guru Aadhaar ID`, `Samithi_ID` FROM balvikas.guru where Samithi_ID = 1";
+  con.connect(function(err){
+    if(err) throw err;
+  });
+  con.query(str, function(err, result){
+    if (err) throw err;
+      console.log("Result: " + result);
+      console.log(result[1]);
+  });
+}
+
+test();
