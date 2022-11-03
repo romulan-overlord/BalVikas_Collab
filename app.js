@@ -33,6 +33,10 @@ const Credentials = mongoose.model("credential", credentialSchema);
 var currentUser;
 
 app.get("/", function(req, res){
+    res.render("home_primary");
+});
+
+app.get("/signin", function(req, res){
     res.render("signin");
 });
 
@@ -64,7 +68,8 @@ app.post("/signin", function(req, res){
 
 app.get("/home", function(req, res){
     if(currentUser){
-        res.render("home", {entries: currentUser.entries});
+        // res.render("home", {entries: currentUser.entries});
+        res.render("home2");
     }else{
         res.redirect("/")
     }
