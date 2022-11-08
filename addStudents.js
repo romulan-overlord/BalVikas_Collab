@@ -718,9 +718,78 @@ let stdGraduationDt = [
     "2021-06-04"
 ]
 
+let stdExtraCrr = [
+    "Choir",
+    "Marching Band",
+    "Singing Lessons",
+    "Painting",
+    "Photography",
+    "Knitting",
+    "Poetry",
+    "Debate",
+    "Sports",
+    "Martial Arts",
+    "Dance Lessons",
+    "Gymnastics",
+    "Yoga",
+    "Gardening",
+    "Acting Classes"
+];
+
+let teachTech = [
+    "Prayer & sloka chanting",
+    "Group Singing & bhajans",
+    "Silent sitting & Meditation",
+    "Story Telling",
+    "Group Activities & Value Games"
+]
+
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
-  }
+}
+
+function getRandomInt2(max) {
+    return Math.floor(Math.random() * max + 1);
+}
+
+function arrayContains(arr, src){
+    for(let i = 0; i < arr.length; i++){
+        if(arr[i] === src){
+            return true;
+        }
+    }
+    return false;
+}
+
+function genHobbyArr(x){
+    let hbArr = [];
+    let i = 0;
+    while(i < x){
+        let nstr = stdExtraCrr[getRandomInt2(15)];
+        if(!arrayContains(hbArr, nstr)){
+            hbArr.push(nstr);
+            i++;
+        }
+    }
+    return hbArr;
+}
+
+function genHobbies(){
+    con.connect(function(err){
+        if(err) throw err;
+    });
+    for(let i = 0; i < studentID.length; i++){
+        let hobbyCount = getRandomInt2(5);
+        let hbArr = genHobbyArr(hobbyCount);
+        for(let j = 0; j < hbArr.length; j++){
+            let str = "insert into balvikas.student_extracurricular_activities values(" + studentID[i] + ", '" + hbArr[j] + "')"
+            con.query(str, function(err, result){
+                if (err) throw err;
+                    console.log("Result: " + result);
+            });
+        }
+    }
+}
 
 function addStudents(){
     con.connect(function(err) {
@@ -737,4 +806,17 @@ function addStudents(){
     });
 }
 
-addStudents();
+function genAttendance(){
+    con.connect(function(err){
+        if(err) throw err;
+        for(let i = 0; i < studentID.length; i++){
+            let str = "insert into balvikas.attendance values(" + studentID[i] + ", 50," + getRandomInt(51) + ")";
+            con.query(str, function(err, result){
+                if (err) throw err;
+                console.log("Result: " + result);
+            });
+        }
+    });
+}
+
+genHobbies();
