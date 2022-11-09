@@ -93,6 +93,14 @@ p {
   
 }
 
+/* dropdown */
+.dropdown-item{
+  color: #ef8172; 
+}
+
+.dropdown-item:hover{
+  color: #ff4c68; 
+}
 
 /* title text home */
 
